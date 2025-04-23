@@ -1,0 +1,7 @@
+Engine/out
+Game/out
+.vs
+out
+build/
+.vscode
+Game/resources
