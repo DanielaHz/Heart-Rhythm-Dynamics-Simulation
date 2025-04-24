@@ -24,16 +24,16 @@ public:
 
 		// Create a light
 		light = new Model(RESOURCES_PATH "3D/cube.obj");
-		light->p = glm::vec3(0, 5, 0);
+		light->p = glm::vec3(10, 1, 0);
 		light->color = glm::vec3(1.0f, 1.0f, 1.0f);
 		light->s = glm::vec3(0.25, 0.25, 0.25);
 
-		// Create a ground plane
-		bottomPlane = new Model(RESOURCES_PATH "3D/plane.obj");
-		bottomPlane->color = glm::vec3(0.0, 0.0, 0.0);
-		bottomPlane->p = glm::vec3(0.0f, -0.0f, 0.0f);
-		bottomPlane->s = glm::vec3(10.0, -1.0, 10.0);
-		scene.push_back(bottomPlane);
+		// // Create a ground plane
+		// bottomPlane = new Model(RESOURCES_PATH "3D/plane.obj");
+		// bottomPlane->color = glm::vec3(0.0, 0.0, 0.0);
+		// bottomPlane->p = glm::vec3(0.0f, -0.0f, 0.0f);
+		// bottomPlane->s = glm::vec3(10.0, -1.0, 10.0);
+		// scene.push_back(bottomPlane);
 
 		// Create a back plane
 		backPlane = new Model(RESOURCES_PATH "3D/plane.obj");
@@ -61,11 +61,11 @@ public:
 
 		//Create soft body with cube model
 		//std::string path, float restitution, float mass, float stiffness, float damping
-		softBody = new SoftBody(RESOURCES_PATH "3D/fun/heart15.obj", 0.5, 1, 5, 0.1);
+		softBody = new SoftBody(RESOURCES_PATH "3D/fun/heartMesh3.obj", 0.5, 1, 50, 1.0);
 		// softBody->color = glm::vec4(0.87, 0.192, 0.388, 1.0); // cerise
 		softBody->color = glm::vec4 (1.0 , 0.0 , 0.0, 1.0); // red
-		softBody->p = glm::vec3(0, 2.0, 0.0);
-		softBody->s = glm::vec3(1);
+		softBody->p = glm::vec3(3.0, 1.0, 0.0);
+		softBody->s = glm::vec3(1.5);
 		scene.push_back(softBody); 
 	
 	}

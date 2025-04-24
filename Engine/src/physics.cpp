@@ -25,30 +25,24 @@ SoftBody::SoftBody(std::string path, float restitution, float mass, float stiffn
 	// Create copy of mesh's initial vertices
 	dynamicVertices = vector<Vertex>(meshes[0].vertices);
 
-	// for (auto e : dynamicVertices)
-	// {
-	// 	std::cout << "the vertices in the mesh are: ("<< e.position.x  << "," << e.position.y << "," << e.position.z << ")\n";
-	// }
-
-	// Create mass points
 	for (Vertex& v : dynamicVertices) {
 		PointMass p(&v, this, restitution, mass, stiffness, damping);
 		pointMasses.push_back(p);
 	}
 
-	// refactir this function!!
+	//copy of the index inthe mesh
+	indices = vector<unsigned int>(meshes[0].indices);
 
-	// Create springs between mass points
-	for (PointMass& p1 : pointMasses) {
-		for (PointMass& p2 : pointMasses) {
-			float d = glm::distance(p1.vert->position, p2.vert->position);
-			if (d > 1)
-			{
-				AddSpring(&p1, &p2);
-			}	
-		}
+	for (size_t i = 0; i < indices.size(); i += 3) {
+		PointMass* point1 = &pointMasses[indices[i]];
+		PointMass* point2 = &pointMasses[indices[i + 1]];
+		PointMass* point3 = &pointMasses[indices[i + 2]];
+	
+		AddSpring(point1, point2);
+		AddSpring(point2, point3);
+		AddSpring(point3, point1);
 	}
-
+	
 	std::cout << "::SOFTBODY STATS::" << std::endl;
 	std::cout << "dynamic vertices: " << dynamicVertices.size() << std::endl;
 	std::cout << "springs: " << springCount << std::endl;
@@ -96,10 +90,10 @@ void SoftBody::Update(float dt) {
 		s.b->forces -= dir * relativeVelocity * damping * s.b->mass;
 	}
 
-	// Integrate all point masses with their forces
-	for (PointMass& p : pointMasses) {
-		p.Integrate(dt);
-	}
+	// // Integrate all point masses with their forces
+	// for (PointMass& p : pointMasses) {
+	// 	p.Integrate(dt);
+	// }
 
 	// Update vertices for rendering
 	meshes[0].UpdateVertices(dynamicVertices);

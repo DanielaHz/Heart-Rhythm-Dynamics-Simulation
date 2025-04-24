@@ -16,6 +16,8 @@
 
 #include "model.h"
 #include "mesh.h"
+#include "set"
+#include "map"
 
 class SoftBody;
 class PointMass;
@@ -66,8 +68,10 @@ public:
 
 	// Vertices we draw, initially set to model's verts
 	vector<Vertex> dynamicVertices;
+	vector<unsigned int> indices; 
 	vector<Spring> springs;
 	vector<PointMass> pointMasses;
+	std::map <int, std::vector<Spring>> uniqueConnections;
 
 	void AddForce(glm::vec3(force));
 	void Update(float dt);
