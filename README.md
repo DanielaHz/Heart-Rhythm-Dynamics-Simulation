@@ -1,6 +1,6 @@
 # Heart Rhythm Dynamics Simulation Using a Three-Coupled Oscillator Model
 
-![img](/images/heart.png)
+![img](/images/image.png)
 
 The present project aims to simulate the dynamics of a human heart using the three-coupled oscillator model proposed in the paper of the same name. Since the heart is a soft body, I will use the JellyEngine as the boilerplate for this assessment.
 
