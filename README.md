@@ -30,6 +30,12 @@ cd build/Game
 
 ![image](/images/ColorSection2.png)
 
+| Name | Color Name | RGB Value |
+| --- | --- | --- |
+| SA Node | Blue | (1.000, 0.401, 0.839) |
+| AV Node | Purple | (0.602, 0.253, 1.000) |
+| HPC | Pink | (0.270, 0.604, 1.000) |
+
 ## Resources 
 
 - https://github.com/Rafapp/jellyengine/blob/main/build.bat
