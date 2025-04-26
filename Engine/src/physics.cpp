@@ -4,9 +4,8 @@
 
 #include <iostream>
 #include <string>
-
 #include "physics.h"
-
+#include <glad/glad.h>
 /*
  * Soft body
  */
@@ -30,8 +29,13 @@ SoftBody::SoftBody(std::string path, float restitution, float mass, float stiffn
 		pointMasses.push_back(p);
 	}
 
-	//copy of the index inthe mesh
+	//copy of the index in the mesh
 	indices = vector<unsigned int>(meshes[0].indices);
+
+	// for (auto e: indices)
+	// {
+	// 	std::cout << "the indices of the mesh: " << e << "\n";
+	// }
 
 	for (size_t i = 0; i < indices.size(); i += 3) {
 		PointMass* point1 = &pointMasses[indices[i]];
@@ -40,12 +44,14 @@ SoftBody::SoftBody(std::string path, float restitution, float mass, float stiffn
 	
 		AddSpring(point1, point2);
 		AddSpring(point2, point3);
-		AddSpring(point3, point1);
+		AddSpring(point3, point1); // <-- Agrega esta línea
 	}
 	
+	
 	std::cout << "::SOFTBODY STATS::" << std::endl;
-	std::cout << "dynamic vertices: " << dynamicVertices.size() << std::endl;
-	std::cout << "springs: " << springCount << std::endl;
+	std::cout << "vertices:" << dynamicVertices.size() << std::endl;
+	std::cout << "indices: " << indices.size() << std::endl;
+	std::cout << "springs: " << springs.size() << std::endl;
 	std::cout << std::endl;
 }
 
@@ -90,10 +96,10 @@ void SoftBody::Update(float dt) {
 		s.b->forces -= dir * relativeVelocity * damping * s.b->mass;
 	}
 
-	// // Integrate all point masses with their forces
-	// for (PointMass& p : pointMasses) {
-	// 	p.Integrate(dt);
-	// }
+	//Integrate all point masses with their forces
+	for (PointMass& p : pointMasses) {
+		p.Integrate(dt);
+	}
 
 	// Update vertices for rendering
 	meshes[0].UpdateVertices(dynamicVertices);
@@ -113,6 +119,51 @@ void SoftBody::Reset() {
 		p.acceleration = glm::vec3(0.0);
 		p.forces = glm::vec3(0.0);
 	}
+}
+
+void SoftBody::RenderSprings(Shader& shader) {
+    std::vector<glm::vec3> lineVertices;
+    
+    for (const Spring& spring : springs) {
+        if (spring.a && spring.b && spring.a->vert && spring.b->vert) {
+            glm::vec3 posA = spring.a->vert->position; // <-- Corrige esto si era 'Position'
+            glm::vec3 posB = spring.b->vert->position;
+
+            lineVertices.push_back(posA);
+            lineVertices.push_back(posB);
+        }
+    }
+
+    if (lineVertices.empty()) return; // Evita pasar nullptr a glBufferData
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    unsigned int VAO, VBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, lineVertices.size() * sizeof(glm::vec3), &lineVertices[0], GL_DYNAMIC_DRAW);
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+
+    shader.use();
+	
+	// Seteamos el color de los resortes (por ejemplo, azul claro)
+	int colorLoc = glGetUniformLocation(shader.ID, "color");
+	glUniform3f(colorLoc,1.0 , 0.0 , 0.0);
+
+	// Si tu shader tiene esta flag para iluminación, desactívala si quieres líneas simples
+	int boolLoc = glGetUniformLocation(shader.ID, "calculateLighting");
+	glUniform1i(boolLoc, 0);  // desactiva iluminación para que se vea solo el color
+	glLineWidth(1.0f);
+    glDrawArrays(GL_LINES, 0, lineVertices.size());
+
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
 }
 
 /*

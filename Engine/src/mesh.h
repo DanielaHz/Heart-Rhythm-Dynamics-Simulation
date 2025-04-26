@@ -27,7 +27,6 @@ struct Vertex {
 		if (normal.y != other.normal.y) return normal.y < other.normal.y;
 		return normal.z < other.normal.z;
 	}
-
 };
 
 struct Texture {
@@ -44,8 +43,8 @@ public:
 	Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures);
 
 	void draw(Shader& shader);
-	void UpdateVertices(vector<Vertex> vertices);
-
+	void UpdateVertices(std::vector<Vertex> vertices);
+	
 private:
 	unsigned int VAO, VBO, EBO;
 	void setup();

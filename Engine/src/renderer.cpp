@@ -22,6 +22,7 @@ namespace Renderer {
     Model* model;
     Model* light;
     Model* plane;
+    SoftBody* body = nullptr;
 
     void Setup() {
         camera = new Camera();
@@ -98,7 +99,9 @@ namespace Renderer {
 
             // Render model
             model->draw(*shader);
-
+            if (body && !body->springs.empty()) {
+                body->RenderSprings(*shader);
+            }            
         }
     }
 }

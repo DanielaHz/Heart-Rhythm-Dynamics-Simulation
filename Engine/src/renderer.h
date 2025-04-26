@@ -12,10 +12,12 @@
 #include "camera.h"
 #include "shader.h"
 #include "model.h"
+#include "physics.h"
 
 namespace Renderer {
 	extern Camera* camera;
 	extern Shader* shader;
+	extern SoftBody* body;
 
 	void Setup();
 	void Draw(Model* light, vector<Model*> scene);

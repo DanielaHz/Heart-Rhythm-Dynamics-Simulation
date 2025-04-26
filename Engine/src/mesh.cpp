@@ -13,7 +13,6 @@
 #include "shader.h"
 #include "mesh.h"
 
-
 using namespace std;
 
 Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
@@ -26,6 +25,7 @@ Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture
 }
 
 void Mesh::setup() {
+    //For the mesh 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
@@ -59,7 +59,8 @@ void Mesh::UpdateVertices(vector<Vertex> vertices) {
 
 void Mesh::draw(Shader& shader) {
     // draw mesh
+    glPointSize(1.0f); 
     glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_POINTS, vertices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }

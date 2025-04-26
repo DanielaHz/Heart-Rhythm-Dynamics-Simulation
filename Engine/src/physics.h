@@ -15,13 +15,12 @@
 #include <glm/glm.hpp>
 
 #include "model.h"
-#include "mesh.h"
 #include "set"
 #include "map"
+#include "shader.h"
 
 class SoftBody;
 class PointMass;
-
 struct Spring {
 	PointMass* a;
 	PointMass* b;
@@ -68,13 +67,14 @@ public:
 
 	// Vertices we draw, initially set to model's verts
 	vector<Vertex> dynamicVertices;
-	vector<unsigned int> indices; 
-	vector<Spring> springs;
 	vector<PointMass> pointMasses;
+	std::vector<Spring> springs;
 	std::map <int, std::vector<Spring>> uniqueConnections;
+	vector<unsigned int> indices; 
 
 	void AddForce(glm::vec3(force));
 	void Update(float dt);
 	void Reset();
-	void AddSpring(PointMass* a, PointMass* b);
+	void AddSpring(PointMass* a, PointMass* b);	
+	void RenderSprings(Shader& shader);
 };

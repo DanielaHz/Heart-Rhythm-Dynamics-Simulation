@@ -16,7 +16,7 @@ public:
 	// Start is called on the first frame
 	void Start() 
 	{
-		Renderer::camera->LookAt = glm::vec3(0.0);
+		Renderer::camera->LookAt = glm::vec3(0.0, 6.0, 0.0);
 		Renderer::camera->Position = glm::vec3(15, 5, 0);
 		Renderer::camera->type = STATIC;
 
@@ -24,50 +24,20 @@ public:
 
 		// Create a light
 		light = new Model(RESOURCES_PATH "3D/cube.obj");
-		light->p = glm::vec3(10, 1, 0);
+		light->p = glm::vec3(25, 1, 0);
 		light->color = glm::vec3(1.0f, 1.0f, 1.0f);
-		light->s = glm::vec3(0.25, 0.25, 0.25);
-
-		// // Create a ground plane
-		// bottomPlane = new Model(RESOURCES_PATH "3D/plane.obj");
-		// bottomPlane->color = glm::vec3(0.0, 0.0, 0.0);
-		// bottomPlane->p = glm::vec3(0.0f, -0.0f, 0.0f);
-		// bottomPlane->s = glm::vec3(10.0, -1.0, 10.0);
-		// scene.push_back(bottomPlane);
-
-		// Create a back plane
-		backPlane = new Model(RESOURCES_PATH "3D/plane.obj");
-		backPlane->color = glm::vec3(0.0, 0.0, 0.0);
-		backPlane->p = glm::vec3(-10.0f, 5.0f, 0.0f);
-		backPlane->r = glm::vec3(0.0f, 0.0, 90.0);
-		backPlane->s = glm::vec3(10.0, -1.0, 10.0);
-		scene.push_back(backPlane);
-
-		// Create a left plane
-		leftPlane = new Model(RESOURCES_PATH "3D/plane.obj");
-		leftPlane->color = glm::vec3(0.0, 0.0, 0.0);
-		leftPlane->p = glm::vec3(0.0, 5.0, 10.0);
-		leftPlane->r = glm::vec3(90.0f, 0.0, 0.0);
-		leftPlane->s = glm::vec3(10.0, -1.0, 10.0);
-		scene.push_back(leftPlane);
-
-		// Create a right plane
-		rightPlane = new Model(RESOURCES_PATH "3D/plane.obj");
-		rightPlane->color = glm::vec3(0.0, 0.0, 0.0);
-		rightPlane->p = glm::vec3(0.0, 5.0, -10.0);
-		rightPlane->r = glm::vec3(90.0f, 0.0, 0.0);
-		rightPlane->s = glm::vec3(10.0, -1.0, 10.0);
-		scene.push_back(rightPlane);
+		light->s = glm::vec3(0.4, 0.4, 0.4);
 
 		//Create soft body with cube model
 		//std::string path, float restitution, float mass, float stiffness, float damping
-		softBody = new SoftBody(RESOURCES_PATH "3D/fun/heartMesh3.obj", 0.5, 1, 50, 1.0);
+		softBody = new SoftBody(RESOURCES_PATH "3D/fun/original.obj", 0.5, 0.1 ,20, 1.0);
 		// softBody->color = glm::vec4(0.87, 0.192, 0.388, 1.0); // cerise
 		softBody->color = glm::vec4 (1.0 , 0.0 , 0.0, 1.0); // red
-		softBody->p = glm::vec3(3.0, 1.0, 0.0);
-		softBody->s = glm::vec3(1.5);
+		softBody->p = glm::vec3(0.0, 6.0, 0.0);
+		softBody->s = glm::vec3(0.9);
 		scene.push_back(softBody); 
-	
+		
+		Renderer::body = softBody;
 	}
 
 	// Update is called every frame
@@ -91,9 +61,9 @@ public:
 
 		// Make camera and light loop around using time and sin, cos
 		light->p = glm::vec3(glm::cos(t/2) * 3.5, 1, glm::sin(t/2) * 3.5);
-		//Renderer::camera->Position = glm::vec3(glm::cos(t/2) * 7.5, 5, glm::sin(t/2) * 7.5);
+		// Renderer::camera->Position = glm::vec3(glm::cos(t/2) * 7.5, 5, glm::sin(t/2) * 7.5);
 
-		softBody->AddForce(glm::vec3(0.0, -9.81, 0.0));
+		softBody->AddForce(glm::vec3(0.0, 0.0 , 0.0));//here is the gravity!!
 		softBody->Update(dt);
 
 		// 'r' to reset
