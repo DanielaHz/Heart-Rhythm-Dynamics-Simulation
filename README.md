@@ -43,6 +43,23 @@ To address this, a third oscillator is introduced to represent the His–Purkinj
 | AV Node | Purple | (0.602, 0.253, 1.000) |
 | HPC | Pink | (0.270, 0.604, 1.000) |
 
+### Data to simulate
+In the thesis titled "Las matemáticas de la fisiología del corazón", the authors simulate a human heart electrocardiogram and use that data for their analysis. I will use the same approach to achieve the best possible results.
+
+| SA Node | AV Node | HCP Node |
+| --- | --- | --- |
+| sa.a = 3 | av.a = 3 | hcp.a = 5 |
+| sa.w1 = 0.2 | av.w1 = 0.1 | hcp.w1 = 1 |
+| sa.w2 = -1.9 | av.w2 = -0.1 | hcp.w2 = -1 |
+| sa.d = 3 | av.d = 3 | hcp.d = 3 |
+| sa.e = 4.9 | av.e = 3 | hcp.e = 7 |
+| sa.omega = 0 | av.omega = 0 | hcp.omega = 0 |
+| sa.q  = 1 | av.q = 1| hcp.q = 20 |
+| sa.kSA_to_kAV = 0  | av.kAV_to_kSA = 5 | hcp.kHPC_to_kSA = 0 |
+| sa.kSA_to_kHPC  = 0 | av.kAV_to_kHPC = 0 | hcp.kHPC_to_kAV = 20 |
+| a0  = 1 | a1 = 0.1| a3 = 0.05 |
+| a5 = 0.4 |  |  |
+
 ## Resources 
 
 - https://github.com/Rafapp/jellyengine/blob/main/build.bat
