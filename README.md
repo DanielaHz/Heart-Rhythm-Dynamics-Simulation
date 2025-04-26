@@ -8,15 +8,18 @@ The present project aims to simulate the dynamics of a human heart using the thr
 
 Build the project
 ```
+mkdir build 
+cd build 
 cmake -DCMAKE_BUILD_TYPE=Release -B out .
 ```
 
 Execute the project
 ```
-mkdir build 
-cd build 
+cd ..
 cmake --build
-./heartsimulation
+
+cd build/Game
+./Game
 ```
 
 ## Resources 

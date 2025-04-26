@@ -14,6 +14,7 @@ set(HEADER_FILES
 	src/mesh.h
 	src/model.h
 	src/physics.h
+	src/RK4.h
 )
 
 set(SOURCE_FILES
@@ -26,6 +27,7 @@ set(SOURCE_FILES
 	src/mesh.cpp
 	src/model.cpp
 	src/physics.cpp
+	src/RK4.cpp
 )
 
 add_library(JellyEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
