@@ -21,6 +21,14 @@ cmake --build
 cd build/Game
 ./Game
 ```
+## Three-Coupled Oscillator Model
+### Heart Zones
+
+![image](/images/HeartModel1.png)
+
+### Model Division
+
+![image](/images/ColorSection2.png)
 
 ## Resources 
 

@@ -30,7 +30,7 @@ public:
 
 		//Create soft body with cube model
 		//std::string path, float restitution, float mass, float stiffness, float damping
-		softBody = new SoftBody(RESOURCES_PATH "3D/fun/original.obj", 0.5, 0.1 ,20, 1.0);
+		softBody = new SoftBody(RESOURCES_PATH "3D/fun/NewHeartColor.obj", 0.5, 0.1 ,20, 1.0);
 		// softBody->color = glm::vec4(0.87, 0.192, 0.388, 1.0); // cerise
 		softBody->color = glm::vec4 (1.0 , 0.0 , 0.0, 1.0); // red
 		softBody->p = glm::vec3(0.0, 6.0, 0.0);
