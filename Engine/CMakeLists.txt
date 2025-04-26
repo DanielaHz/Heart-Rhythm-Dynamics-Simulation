@@ -15,6 +15,7 @@ set(HEADER_FILES
 	src/model.h
 	src/physics.h
 	src/RK4.h
+	src/ThreeCoupledOscillator.h
 )
 
 set(SOURCE_FILES
@@ -28,6 +29,7 @@ set(SOURCE_FILES
 	src/model.cpp
 	src/physics.cpp
 	src/RK4.cpp
+	src/ThreeCoupledOscillator.cpp
 )
 
 add_library(JellyEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
