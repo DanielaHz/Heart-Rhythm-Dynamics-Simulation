@@ -6,7 +6,7 @@ void HeartOscillatorSystem::update( double dt)
     double x1 = sa.x;
     double x2 = sa.dx;
     double x3 = av.x;
-    double x5 = hp.x;
+    double x5 = hpc.x;
     
     double dx1 = x2;
     double dx2 = -sa.a* x2 * (x1 - sa.w1) * (x1 - sa.w2) - x1 * (x1 + sa.d) * (x1 + sa.e) + sa.q* glm::sin(sa.omega * t) + sa.kSA_to_AV * (x1 - x3) + sa.kSA_to_HP * (x1 - x5);

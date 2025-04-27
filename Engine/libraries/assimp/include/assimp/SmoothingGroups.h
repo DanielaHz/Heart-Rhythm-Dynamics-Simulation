@@ -94,6 +94,9 @@ struct MeshWithSmoothingGroups
     //! Vertex positions
     std::vector<aiVector3D> mPositions;
 
+    //! RGB values 
+    std::vector<aiVector3D> mRGB;
+
     //! Face lists
     std::vector<T> mFaces;
 

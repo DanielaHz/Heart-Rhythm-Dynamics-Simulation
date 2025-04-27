@@ -31,4 +31,5 @@ private:
     void loadModel(std::string path);
     void processNode(aiNode* node, const aiScene* scene);
     Mesh processMesh(aiMesh* mesh, const aiScene* scene);
+    void processMeshZones(std::vector<Vertex> vertices, std::map<std::string,std::vector<Vertex>> &heartZones);
 };
