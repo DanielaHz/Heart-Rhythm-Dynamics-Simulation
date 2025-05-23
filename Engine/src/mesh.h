@@ -6,9 +6,7 @@
 
 #include <vector>
 #include <string>
-
 #include <glm/glm.hpp>
-
 #include "shader.h"
 
 using namespace std;
@@ -18,6 +16,8 @@ struct Vertex {
 	glm::vec3 rgb; 
 	glm::vec3 normal;
 	glm::vec3 texCoords;
+	glm::vec3 updatePosition = position; // to be update by the time integrator
+	glm::vec3 updateVelocity; // to be update by the time integrator
 
 	bool operator<(const Vertex& other) const
 	{

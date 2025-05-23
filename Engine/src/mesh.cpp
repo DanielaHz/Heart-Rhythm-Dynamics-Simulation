@@ -9,7 +9,6 @@
 
 #include <glad/glad.h>
 #include <iostream>
-
 #include "shader.h"
 #include "mesh.h"
 
@@ -59,8 +58,8 @@ void Mesh::UpdateVertices(vector<Vertex> vertices) {
 
 void Mesh::draw(Shader& shader) {
     // draw mesh
-    glPointSize(1.0f); 
+    // glPointSize(2.5f); 
     glBindVertexArray(VAO);
-    glDrawElements(GL_POINTS, vertices.size(), GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
