@@ -39,6 +39,7 @@ target_include_directories(JellyEngine PUBLIC "libraries/glad/include")
 target_include_directories(JellyEngine PUBLIC "libraries/glfw/include")
 target_include_directories(JellyEngine PUBLIC "libraries/glm")
 target_include_directories(JellyEngine PUBLIC "libraries/assimp/include")
+include_directories(/home/danielahernandez/gmsh/api)
 
 # Cmake library header subdirectories
 add_subdirectory("libraries/glad") # opengl loader
@@ -50,4 +51,4 @@ add_subdirectory("libraries/assimp") # 3D model loading
 target_compile_definitions(JellyEngine PUBLIC RESOURCES_PATH="${CMAKE_CURRENT_SOURCE_DIR}/../Game/resources/")
 
 target_link_libraries(JellyEngine PUBLIC glad glfw glm assimp)
-
+target_link_libraries(JellyEngine PRIVATE /home/danielahernandez/gmsh/build/libgmsh.so)
