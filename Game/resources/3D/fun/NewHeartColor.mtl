@@ -1,0 +1,116 @@
+# Blender 4.4.1 MTL File: 'humanheartblend.blend'
+# www.blender.org
+
+newmtl AVNode
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.094138 0.000000 0.800111
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl AVNode.004
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.058639 0.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Ks /home/danielahernandez/Downloads/HumanHeart_OBJ/HumanBase___cavity.png
+map_Bump /home/danielahernandez/Downloads/HumanHeart_OBJ/HumanBase__normals.png -bm 1
+
+newmtl HPC
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800133 0.000000 0.785331
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl HeartHigh20_blinnSG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Ks /home/danielahernandez/Downloads/HumanHeart_OBJ/HumanOpening__cavity.png
+map_Bump /home/danielahernandez/Downloads/HumanHeart_OBJ/HumanOpening__normals.png -bm 1
+
+newmtl SANode
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.062906 0.800047
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Vains01_blinnSG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Vains02_blinnSG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl pTorus1_blinnSG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Ks /home/danielahernandez/Downloads/HumanHeart_OBJ/MitralValve__cavity.png
+map_Bump /home/danielahernandez/Downloads/HumanHeart_OBJ/MitralValve_normals.png -bm 1
+
+newmtl pTorus2_blinnSG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Ks /home/danielahernandez/Downloads/HumanHeart_OBJ/TricuspidValve_cavity.png
+map_Bump /home/danielahernandez/Downloads/HumanHeart_OBJ/TricuspidValve_normals.png -bm 1
+
+newmtl polySurface1_blinnSG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl polySurface2_blinnSG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
