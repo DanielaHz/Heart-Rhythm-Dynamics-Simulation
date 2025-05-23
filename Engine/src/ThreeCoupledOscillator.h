@@ -1,5 +1,8 @@
 # pragma once
 #include <glm/glm.hpp>
+#include <map>
+#include <vector>
+#include <string>
 
 // This model was taking from the paper called: An analysis of heart rhythm dynamics using a three-coupled oscillator model
 // Authors: Sandra R.F.S.M Gois & Marcelo A. Savi
@@ -37,19 +40,3 @@ struct HisPurkinjeComplex
     double kHP_to_SA, kHP_to_AV;
 };
 
-struct HeartOscillatorSystem
-{
-    SANode sa;
-    AVNode av;
-    HisPurkinjeComplex hpc;
-
-    double t; // time
-
-    double a0;
-    double a1;
-    double a3;
-    double a5;
-
-    void update(double dt);
-    double getECG();
-};
