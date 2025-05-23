@@ -98,10 +98,11 @@ namespace Renderer {
             glUniform1i(boolLoc, 1);
 
             // Render model
-            model->draw(*shader);
-            if (body && !body->springs.empty()) {
-                body->RenderSprings(*shader);
-            }            
+            model->draw(*shader);    
         }
+
+        if (body && !body->springs.empty()) {
+            body->RenderSprings(*shader);
+        }        
     }
 }
